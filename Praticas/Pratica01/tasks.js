@@ -1,28 +1,35 @@
-const tasks = {id: 1, nome: 'Maria', completed: false}
+const tasks = [
+    {id: 1, nome: 'Estudar', completed: false},
+    {id: 2, nome: 'Dormir', completed: false}
+    ]
 
-function getTasks(){
-    return tasks
-}
+const getTasks = () => tasks;
 
-console.log(tasks)
-
-function addTasks(taskName){
-    const novaTask = [
+const addTasks = (taskName) => {
+    const novaTarefa = [
         tasks.id = tasks.lenght + 1,
         tasks.nome = taskName,
         tasks.completed = false,
     ]
 
-    return tasks.push(...[novaTask])
+    return tasks.push(novaTarefa)
   
 }
 
 console.log(novaTask)
 
-function removeTask(taskId){
+const removeTask = (taskId) => {
+    const index = tasks.findIndex((task)=> task.id === task.id ) //busca indice e cria função de comparação com o parâmetro buscado. Se localizado, guarda a posição do elemento
         taskId = tasks.id
-        tasks.filter(tarefa => tarefa.id != taskId ).map(RemoveLinha => RemoveLinha.tasks)
-        tasks = RemoveLinha
+        tasks.splice(index, 1) //se localizado remove linha
+        //tasks.filter(tarefa => tarefa.id != taskId ).map(RemoveLinha => RemoveLinha.tasks)
+        
     }   
 
-console.log()
+const updateTask = (taskId, props) => {
+    const index = tasks.findIndex((task) => task.id === taskId) //identifica a linha 
+    tasks[index].nome = props.nome
+    tasks[index].completed = props.completed
+}
+
+export {getTasks, addTasks, removeTask, updateTask}
